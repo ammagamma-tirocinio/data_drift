@@ -3,7 +3,6 @@ from compute_psi import calculate_psi
 from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-import shap
 
 def adwin_detection(data_stream):
     adwin = ADWIN()
@@ -40,10 +39,10 @@ def psi_detection(data_stream, w0, w1, slidind_window = True):
     else:
         for i in range(w0, len(data_stream)):
             val = calculate_psi(data_stream[: w0], data_stream[i - w1:i])
-            if val >= 0.3:
+            if val >= 30:
                 indexes_high.append(i)
             else:
-                if val >= 0.2:
+                if val >= 20:
                     indexes_mid.append(i)
 
     return indexes_high, indexes_mid

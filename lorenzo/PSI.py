@@ -12,25 +12,19 @@ import matplotlib.pyplot as plt
 
 data_stream = np.concatenate((np.random.uniform(1,10,100),np.random.uniform(10,30,50), np.random.uniform(30,50,50), np.random.uniform(10,15,20)))
 real_indexes = [100,150,200]
-predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 20, w1 = 20)
+predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 30, w1 = 30)
 show_plot(data_stream,predicted_index_high,real_indexes)
 plt.title('Gradual Data drift with  PSI > 0.3')
 # show_plot(data_stream,predicted_index_mid,real_indexes)
 # plt.title('Gradual Data drift with 0.2 > PSI < 0.3')
 plt.show()
 
-# syntetic iris dataset
-data_stream = np.concatenate((virginica.iloc[:50,0],setosa.iloc[:50,0],versicolor.iloc[:10,0],virginica.iloc[20:25,0]))
-predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 20, w1 =20)
-show_plot(data_stream,predicted_index_high,real_indexes)
-plt.title('Iris syntetic dataset Data drift with  PSI > 0.3')
-plt.show()
 
 ## syntetic dataset - abrut drift
 
 data_stream = np.concatenate((np.random.uniform(10,30,100),np.random.uniform(150,200,50), np.random.uniform(30,50,50), np.random.uniform(10,15,20)))
 real_indexes = [100,150]
-predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 20, w1 = 20)
+predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 30, w1 = 30)
 show_plot(data_stream,predicted_index_high,real_indexes)
 plt.title('Gradual Data drift with  PSI > 0.3')
 plt.show()
@@ -38,7 +32,7 @@ plt.show()
 ## Bike Sharing Demand Kaggle's Dataset
 
 data_stream = raw_data.loc[:,'cnt'].rolling(window =20).mean()
-predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 20, w1 = 20)
+predicted_index_high, predicted_index_mid = psi_detection(data_stream, w0 = 100, w1 = 356)
 show_plot(data_stream, predicted_index_high, syntetic_dataset = False)
 plt.title('Bike Demand Data drift with  PSI > 0.3')
 plt.show()
